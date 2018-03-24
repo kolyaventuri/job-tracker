@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20180324211139) do
     t.datetime "updated_at", null: false
     t.bigint "company_id"
     t.string "city"
-    t.bigint "category_id", default: 0
+    t.bigint "category_id"
     t.index ["category_id"], name: "index_jobs_on_category_id"
     t.index ["company_id"], name: "index_jobs_on_company_id"
   end
