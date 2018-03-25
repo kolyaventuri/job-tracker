@@ -22,6 +22,8 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+    @comment = Comment.new()
+    @comments = Comment.where(params[:job_id] == :id)
   end
 
   def edit
