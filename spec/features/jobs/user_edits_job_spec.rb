@@ -9,7 +9,7 @@ require 'rails_helper'
         job = company.jobs.create!(title: 'Developer', level_of_interest: 70, city: 'Denver', category_id: 1)
 
         visit edit_company_job_path(company, job, category)
-        
+
 
         fill_in 'job[title]', with: 'Developer'
         fill_in 'job[description]', with: 'So fun!'
