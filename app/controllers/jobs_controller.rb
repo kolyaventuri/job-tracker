@@ -23,8 +23,8 @@ class JobsController < ApplicationController
   def show
     @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
-    @comment = Comment.new()
     @comments = Comment.where(params[:job_id] == :id)
+    @comment = Comment.new()
   end
 
   def edit
