@@ -1,5 +1,20 @@
-All Jobs for <strong><%= @company.name %></strong>
 
-<% @jobs.each do |job| %>
-  <ul><%= job.title %> at <%= job.company.name %></ul>
-<% end %>
+<%= render partial: "form" %>
+
+
+
+<div class="row">
+  <% @jobs.each do |job| %>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2 class="card-title"><%= job.title %></h2>
+              <p class="card-text"><%= job.description %></p>
+            </div>
+            <div class="card-footer">
+                <%= link_to 'More Info', company_job_path(@company,job), { :class=>"btn btn-primary" } %>
+
+            </div>
+          </div>
+        </div>
+        <% end %>
