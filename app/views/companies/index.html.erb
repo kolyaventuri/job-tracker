@@ -1,11 +1,22 @@
-<h3>All Companies</h3>
+<%= render partial: "form" %>
 
-<ul>
-  <% @companies.each do |company| %>
-  <li class=company_<%= company.id %>>
-    <%= link_to company.name, company_path(company) %>: 
-    <%= link_to "Edit", edit_company_path(company) %>
-    <%= link_to "Delete", company_path(company), method: "delete" %>
-  </li>
-  <% end %>
-</ul>
+
+
+
+
+<div id="something"class="row">
+<% @companies.each do |company| %>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+     <h2 class="card-title">  <%= link_to company.name, company_path(company),{:style=>'color: black;'} %></h2>
+        <%= link_to '<i class="fa fa-trash-o" style="font-size:24px"></i>'.html_safe,  company_path(company), method: "delete" %>
+         <%= link_to    '<i class="fa fa-edit" style="font-size:24px"></i>'.html_safe, edit_company_path(company) %>
+            <p class="card-text"> </p>
+            </div>
+            <div class="card-footer">
+         </div>
+          </div>
+        </div>
+        <% end %>
+  

@@ -1,3 +1,22 @@
 <h2>Create a new job at <%= @company.name %> here!</h2>
 
-<%= render partial: "form" %>
+
+<%= form_for [@company, @job] do |f| %>
+  <p> Company select  <%= f.collection_select(:company_id, Company.all, :id, :name, prompt: @company.name) %></p>
+  <p> Category select  <%= f.collection_select(:category_id, Category.all, :id, :name) %></p>
+
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.label :level_of_interest %>
+  <%= f.number_field :level_of_interest %>
+
+  <%= f.label :city %>
+  <%= f.text_field :city %>
+
+  <%= f.submit %>
+<% end %>
