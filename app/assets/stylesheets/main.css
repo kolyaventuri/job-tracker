@@ -1,5 +1,5 @@
 body {
-  background-color: black;
+
  }
 
 #nav{
@@ -9,4 +9,18 @@ body {
 #header{
   background-color:  black !important;
    font: italic bold  Aclonica, serif!important;
+}
+
+#edit-box{
+    background-color: black !important;
+    width: 700px !important;
+    max-width: 93%;
+    margin-left: 20px;
+    height: 405px;
+    text-align: left;
+    margin-top: 1px;
+}
+
+#card-bod{
+  margin-top: 30px;
 }
