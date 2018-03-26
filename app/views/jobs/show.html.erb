@@ -46,7 +46,7 @@
       <div class="col-lg-4">
         <div id="edit-box-1" class="col-md-4 mb-4">
           <div class="card h-100">
-    
+
             <div id="card-bod" class="card-body">
 
 
@@ -68,25 +68,17 @@
               <%= f.label :comment %>
               <%= f.text_field :comment %>
               <%= f.hidden_field :job_id, value: @job.id %>
-
               <%= f.submit %>
               <% end %>
-
-
               <% @job.comments.each do |comment| %>
                 <ul><%= comment.comment %></ul>
               <% end %>
-
-
-              <%= link_to "Edit", edit_company_job_path(@job.company) %>
-              <%= link_to "Delete", company_job_path(@job.company), method: "delete" %>
-
+         <%= link_to    '<i class="fa fa-edit" style="font-size:24px"></i>'.html_safe, edit_company_job_path(@job.company) %>
+       <%= link_to '<i class="fa fa-trash-o" style="font-size:24px"></i>'.html_safe,  company_job_path(@job.company), method: "delete" %>
 
                   </div>
                 </div>
               </div>
-
-
       </div>
     </div>
     <div id="header" class="card text-white bg-secondary my-4 text-center">
