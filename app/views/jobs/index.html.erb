@@ -12,8 +12,12 @@
               <p class="card-text"><%= job.description %></p>
             </div>
             <div class="card-footer">
+              <% if @company != nil %>
                 <%= link_to 'More Info', company_job_path(@company,job), { :class=>"btn btn-primary" } %>
-
+                 <% end %>
+                <% if @company == nil %>
+                  <%= link_to 'More Info', job_path(job), { :class=>"btn btn-primary" } %>
+                  <% end %>
             </div>
           </div>
         </div>

@@ -43,6 +43,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rspec-rails'
+  gem 'pry'
 end
 
 group :development do
