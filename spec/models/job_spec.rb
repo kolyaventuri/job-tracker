@@ -9,5 +9,6 @@ describe Job, type: :model do
 
   describe 'relationships' do
     it { is_expected.to belong_to(:company) }
+    it { is_expected.to belong_to(:category) }
   end
 end
