@@ -90,7 +90,7 @@ describe "user navigates to jobs index"  do
       job = company.jobs.create!(title: 'Developer', level_of_interest: 70, city: 'Denver', category_id: 1)
 
 
-    visit 'companies/1/jobs'
+     visit 'companies/1/jobs'
 
     click_link("home-nav")
 
