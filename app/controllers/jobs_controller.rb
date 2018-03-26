@@ -1,7 +1,12 @@
+require 'pry'
 class JobsController < ApplicationController
   def index
-    @company = Company.find(params[:company_id])
-    @jobs = @company.jobs
+    if params[:company_id]
+      @company = Company.find(params[:company_id])
+      @jobs = @company.jobs
+    else
+      @jobs = Job.all
+    end
   end
 
   def new
@@ -21,10 +26,16 @@ class JobsController < ApplicationController
   end
 
   def show
+    if params[:company_id]
     @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
     @comments = Comment.where(params[:job_id] == :id)
     @comment = Comment.new()
+    else
+      @job = Job.find(params[:id])
+      @comments = Comment.where(params[:job_id] == :id)
+      @comment = Comment.new()
+    end
   end
 
   def edit
