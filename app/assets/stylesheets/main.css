@@ -1,2 +1,11 @@
 body {
-  background-color: black; }
+  background-color: black;
+ }
+
+#nav{
+  background-color: black !important;
+  }
+
+#header{
+  background-color:  black !important;
+}
