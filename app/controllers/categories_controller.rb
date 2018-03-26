@@ -1,8 +1,6 @@
+# Category Controller
 class CategoriesController < ApplicationController
-
   def new
-    @category = Category.new()
-  end 
-
-
+    @category = Category.new
+  end
 end
