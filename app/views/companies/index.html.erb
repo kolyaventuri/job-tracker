@@ -12,7 +12,7 @@
 
 
 
-              <h2 class="card-title">  <%= link_to company.name, company_path(company) %></h2>
+              <h2 class="card-title">  <%= link_to company.name, company_path(company),{:style=>'color: black;'} %></h2>
         <%= link_to '<i class="fa fa-trash-o" style="font-size:24px"></i>'.html_safe,  company_path(company), method: "delete" %>
          <%= link_to    '<i class="fa fa-edit" style="font-size:24px"></i>'.html_safe, edit_company_path(company) %>
             <p class="card-text"> </p>
