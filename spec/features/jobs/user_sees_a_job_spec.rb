@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 describe 'User sees a specific job' do
+  before(:all) do
+    DatabaseCleaner.clean
+  end
+
+  after(:all) do
+    DatabaseCleaner.clean
+  end
+  
   scenario 'a user sees a job for a specific company' do
     Category.create!(id: 1, name: "art")
     company = Company.create!(name: 'ESPN')

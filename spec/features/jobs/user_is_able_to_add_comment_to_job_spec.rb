@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 describe 'User visits job show page' do
+  before(:all) do
+    DatabaseCleaner.clean
+  end
+
+  after(:all) do
+    DatabaseCleaner.clean
+  end
   context 'visit[company_job_path]'  do
     it 'user writes comment' do
     Category.create!(id: 1, name: "art")
@@ -21,6 +28,14 @@ end
 
 
 describe 'User visits job show page' do
+  before(:all) do
+    DatabaseCleaner.clean
+  end
+
+  after(:all) do
+    DatabaseCleaner.clean
+  end
+  
   context 'visit[company_job_path]'  do
     it 'user writes multiple comments' do
     Category.create!(id: 1, name: "art")

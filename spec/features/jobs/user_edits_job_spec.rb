@@ -2,6 +2,14 @@ require 'rails_helper'
 
 
   describe "user navigates to job edit page"  do
+    before(:all) do
+      DatabaseCleaner.clean
+    end
+
+    after(:all) do
+      DatabaseCleaner.clean
+    end
+    
     context "visit[edit_company_job]"  do
       it  "they fill out form and click submit and sees edited job"  do
         category = Category.create!(id: 1, name: "art")
