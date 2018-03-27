@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     resource :jobs
   end
 
+     resources :jobs, only: [:show, :index]
+
+root 'welcome#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
