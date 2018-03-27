@@ -8,7 +8,7 @@ describe 'User' do
   after(:all) do
     DatabaseCleaner.clean
   end
-  
+
   scenario 'can create a new category' do
     visit new_category_path
 
