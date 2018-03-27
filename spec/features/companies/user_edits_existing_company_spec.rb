@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 describe 'User edits an existing company' do
+  before(:all) do
+    DatabaseCleaner.clean
+  end
+
+  after(:all) do
+    DatabaseCleaner.clean
+  end
+  
   scenario 'a user can edit a company' do
     company = Company.create!(name: 'ESPN')
     visit edit_company_path(company)
