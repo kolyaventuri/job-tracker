@@ -43,6 +43,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'launchy'
   gem 'rspec-rails'
   gem 'pry'
 end
