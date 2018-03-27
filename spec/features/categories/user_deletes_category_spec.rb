@@ -26,8 +26,10 @@ describe 'User' do
       end
 
       expect(current_path).to eq(categories_path)
-      expect(page).to have_content(cat1)
-      expect(page).to_not have_content(cat2)
+      within('#category_list') do
+        expect(page).to have_content(cat1)
+        expect(page).to_not have_content(cat2)
+      end
     end
   end
 end
