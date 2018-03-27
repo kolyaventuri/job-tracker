@@ -35,10 +35,8 @@ describe 'User' do
 
       click_on 'Update Category'
 
-      expect(current_path).to eq(categories_paths)
-      within('#category_list') do
-        expect(page).to have_content('Ham and Cheese')
-      end
+      expect(current_path).to eq(category_path(Category.last.id))
+      expect(page).to have_content('Ham and Cheese')
     end
   end
 end

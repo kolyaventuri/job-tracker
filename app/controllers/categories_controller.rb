@@ -18,11 +18,21 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find(params[:id])
+    @category = category
   end
 
   def edit
-    @category = Category.find(params[:id])
+    @category = category
+  end
+
+  def update
+    category.update(category_params)
+    if category.save
+      flash[:success] = "#{category.name} updated!"
+      redirect_to category_path(category)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -39,5 +49,9 @@ class CategoriesController < ApplicationController
   private
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def category
+    Category.find(params[:id])
   end
 end
