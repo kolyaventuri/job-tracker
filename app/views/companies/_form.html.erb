@@ -20,15 +20,15 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" style = "font-size:23px" href="#">Home
+            <%= link_to 'Home', root_path, {:id=>"home-nav", :class=>"nav-link",:style=>"font-size:23px" } %>
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style = "font-size:23px"href="#">About</a>
+            <%= link_to 'Companies', companies_path, {:id=>"companies-nav", :class=>"nav-link",:style=>"font-size:23px" } %>
           </li>
           <li class="nav-item">
-            <a class="nav-link"style = "font-size:23px" href="#">Services</a>
+            <%= link_to 'Jobs', jobs_path, {:id=>"jobs-nav", :class=>"nav-link",:style=>"font-size:23px" } %>
           </li>
           <li class="nav-item">
             <a class="nav-link"style = "font-size:23px" href="#">Contact</a>
@@ -40,7 +40,7 @@
   <div class="container">
     <div class="row my-4">
       <div class="col-lg-8">
-        <img class="img-fluid rounded" src="https://preview.ibb.co/ce8TX7/jonathan_riley_118591_unsplash.jpg"height="20px" width="100%" alt="">
+        <img class="img-fluid rounded" src="https://preview.ibb.co/e0qj77/the_roaming_platypus_310824_unsplash_copy.jpg"height="20px" width="100%" alt="">
       </div>
       <div class="col-lg-4">
 
