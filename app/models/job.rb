@@ -13,6 +13,14 @@ class Job < ApplicationRecord
     whole_part + partial
   end
 
+  def whole_stars
+    stars.to_i
+  end
+
+  def half_star?
+    stars == stars.to_i
+  end
+
   def self.location_group
     order(:city)
   end
