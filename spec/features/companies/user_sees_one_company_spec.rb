@@ -8,7 +8,7 @@ describe 'User sees one company' do
   after(:all) do
     DatabaseCleaner.clean
   end
-  
+
   scenario 'a user sees a company' do
     Category.create!(id: 1, name: "art")
     company = Company.create!(name: 'ESPN')
@@ -16,8 +16,7 @@ describe 'User sees one company' do
 
     visit company_path(company)
 
-    expect(current_path).to eq("/companies/#{company.id}/jobs")
+    expect(current_path).to eq(company_path(company))
     expect(page).to have_content('ESPN')
-    expect(page).to have_content('Developer')
   end
 end

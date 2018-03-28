@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
   resources :companies do
-    resources :contacts
+    resources :contacts, only: [:create, :destroy, :edit, :update]
     resources :jobs do
       resources :comments
     end
   end
-
-  resources :contacts, only: [:show, :index]
 
   resources :comments
   resources :categories, shallow: true do
