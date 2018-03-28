@@ -29,7 +29,6 @@ class Job < ApplicationRecord
   end
 
   def self.count_levels_of_interest
-    binding.pry
-    Job.group(:level_of_interest).count
+    Job.group(:level_of_interest).count.sort.to_h
   end
 end

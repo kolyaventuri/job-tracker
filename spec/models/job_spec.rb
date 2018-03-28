@@ -24,20 +24,21 @@ describe Job, type: :model do
   describe 'methods' do
     it 'should be able to return count of jobs by level of interest' do
       company = Company.create!(name: 'ESPN')
+      category = Category.create!(name: 'Art')
 
       factory_output = JobFactory.create(50)
       jobs = factory_output[:jobs]
       expected = factory_output[:expected]
 
       jobs.map do |job|
+        job.company = company
+        job.category = category
         job.save
       end
 
-      binding.pry
-
       output = Job.count_levels_of_interest
 
-      expect(output).to eq(expected)
+      expect(output).to eql(expected)
     end
   end
 end

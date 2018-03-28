@@ -13,10 +13,10 @@ class JobFactory
       expected[interest.to_s] = 0 if expected[interest.to_s].nil?
       expected[interest.to_s] += 1
     end
-    
+
     {
       jobs: jobs,
-      expected: expected
+      expected: expected.sort.to_h
     }
   end
 end
