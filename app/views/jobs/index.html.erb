@@ -2,8 +2,6 @@
 <%= render partial: "form" %>
 
 
-<h4> <%= link_to "Sort jobs by city", "jobs?sort=location", { :class=>"btn btn-primary", :id=>"first" }%></h4>
-<h4> <%= link_to "Sort cities by level of interest", "jobs?sort=interest", { :class=>"btn btn-primary", :id=>"second" }%></h4>
 
 <div class="row">
   <% @jobs.each do |job| %>

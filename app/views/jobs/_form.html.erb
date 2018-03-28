@@ -1,3 +1,4 @@
+
   <div class="container">
     <div class="row my-4">
       <div class="col-lg-8">
@@ -6,20 +7,25 @@
       <div class="col-lg-4">
         <% unless @company.nil? %>
           <div id="header" class="card text-white bg-secondary my-4 text-center">
-            <div class="card-body">
-              <%= link_to "Create New Job", new_company_job_path(@company,@jobs),{:style=>'color:#FFFFFF; font-size:35px;',:class => "css_class"} %>
-            </div>
           </div>
           <h1><%= @company.name %></h1>
           <p>These are all the job listing we have for <%=@company.name%> </p>
-           <%= link_to 'Back to all companies', companies_path(@company), { :class=>"btn btn-primary btn-lg" } %>
-         <% end %>
+           <%= link_to 'Back to all companies', companies_path(@company), { :class=>"btn btn-primary btn-lg" } %><br>
+         <% end %><br>
+         <h4> <%= link_to "Sort cities by level of interest", "jobs?sort=interest", { :class=>"btn btn-primary", :id=>"second" }%></h4>
+         <h4> <%= link_to "Sort jobs by city", "jobs?sort=location", { :class=>"btn btn-primary", :id=>"first" }%></h4>
+
+
+
       </div>
     </div>
     <div id="header" class="card text-white bg-secondary my-4 text-center">
       <div class="card-body">
           <% if @company != nil %>
-        <p class="text-white m-0" style = "font-size:23px">All Jobs for <%=@company.name%></p>
+          <div class="card-body">
+            <%= link_to "Create New Job", new_company_job_path(@company,@jobs),{:style=>'color:#FFFFFF; font-size:35px;',:class => "css_class"} %>
+          </div>
           <% end %>
       </div>
-    </div>
+ </div>
+

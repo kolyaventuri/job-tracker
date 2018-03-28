@@ -19,7 +19,7 @@ company.jobs.create!(title: 'Boss', level_of_interest: 40, city: 'Zebra', catego
     end
    end
   end
-  require 'rails_helper'
+
 
   describe 'User visits jobs index page' do
     context 'visit[jobs_path]'  do
