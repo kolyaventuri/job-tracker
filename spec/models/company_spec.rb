@@ -2,6 +2,14 @@ require 'rails_helper'
 
 describe Company, type: :model do
   describe 'validations' do
+    before(:all) do
+      DatabaseCleaner.clean
+    end
+
+    after(:all) do
+      DatabaseCleaner.clean
+    end
+    
     it { is_expected.to validate_presence_of(:name) }
 
     it 'requires a unique name' do

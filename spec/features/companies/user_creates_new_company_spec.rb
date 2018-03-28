@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 describe 'User creates a new company' do
+  before(:all) do
+    DatabaseCleaner.clean
+  end
+
+  after(:all) do
+    DatabaseCleaner.clean
+  end
+  
   scenario 'a user can create a new company' do
     visit new_company_path
 

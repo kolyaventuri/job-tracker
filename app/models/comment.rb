@@ -1,5 +1,4 @@
 class Comment < ApplicationRecord
-belongs_to :job
-
-
+  validates_presence_of :comment
+  belongs_to :job
 end
