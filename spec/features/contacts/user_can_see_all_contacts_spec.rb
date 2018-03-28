@@ -2,10 +2,11 @@ require 'rails_helper'
 
 describe 'User visits the contacts index' do
   before(:all) do
+    DatabaseCleaner.clean
     company = Company.create!(name: 'ESPN')
     Contact.create!(name: 'Bob', email: 'bob@bob', role: 'PM', company: company)
     Contact.create!(name: 'Sally', email: 'sally@sally', role: 'MG', company: company)
-    DatabaseCleaner.clean
+
   end
 
   after(:all) do
@@ -14,7 +15,6 @@ describe 'User visits the contacts index' do
 
   scenario 'a user sees all the contacts' do
     visit contacts_path
-
     expect(page).to have_content(Contact.first.name)
     expect(page).to have_content(Contact.first.email)
     expect(page).to have_content(Contact.first.role)
