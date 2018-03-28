@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 
-  describe "user navigates to job edit page"  do
+  describe 'user navigates to job edit page' do
     before(:all) do
       DatabaseCleaner.clean
     end
@@ -9,10 +9,10 @@ require 'rails_helper'
     after(:all) do
       DatabaseCleaner.clean
     end
-    
-    context "visit[edit_company_job]"  do
-      it  "they fill out form and click submit and sees edited job"  do
-        category = Category.create!(id: 1, name: "art")
+
+    context 'visit[edit_company_job]'  do
+      it 'they fill out form and click submit and sees edited job'  do
+        category = Category.create!(id: 1, name: 'art')
         company = Company.create!(name: 'ESPN')
         job = company.jobs.create!(title: 'Developer', level_of_interest: 70, city: 'Denver', category_id: 1)
 
@@ -31,8 +31,8 @@ require 'rails_helper'
         expect(page).to have_content('So fun!')
         expect(page).to have_content(80)
         expect(page).to have_content('Denver')
-        expect(page).to have_link('Edit')
-        expect(page).to have_link('Delete')
+        expect(page).to have_selector('.fa-edit')
+        expect(page).to have_selector('.fa-trash-o')
         expect(page).to have_link('ESPN')
 
       end
