@@ -4,6 +4,15 @@ class Job < ApplicationRecord
   belongs_to :category
   has_many :comments, dependent: :destroy
 
+  def stars
+    normalized = level_of_interest / 20.0
+    whole_part = normalized.to_i
+    partial = normalized - whole_part
+    partial = 0.5 unless partial.zero?
+
+    whole_part + partial
+  end
+
   def self.location_group
     order(:city)
   end
