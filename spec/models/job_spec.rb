@@ -38,9 +38,9 @@ describe Job, type: :model do
     end
 
     it 'should be able to return count of jobs for a single interest level' do
-      output = Job.count_level_of_interest(3)
-
-      expect(output).to eql(@expected[3])
+      output = Job.count_level_of_interest(Job.first.level_of_interest)
+      
+      expect(output).to eql(@expected[Job.to_stars(Job.first.level_of_interest)])
     end
 
     it 'should be able to normalize interest to [0-5]' do

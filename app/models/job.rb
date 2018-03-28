@@ -5,12 +5,7 @@ class Job < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   def stars
-    normalized = level_of_interest / 20.0
-    whole_part = normalized.to_i
-    partial = normalized - whole_part
-    partial = 0.5 unless partial.zero?
-
-    whole_part + partial
+    Job.to_stars(level_of_interest)
   end
 
   def whole_stars
@@ -38,7 +33,8 @@ class Job < ApplicationRecord
   end
 
   def self.count_level_of_interest(rating)
-    Job.where(level_of_interest: rating).count
+    rating = to_stars(rating)
+    count_all_levels_of_interest[rating]
   end
 
   def self.sorted_level_of_interest
@@ -46,6 +42,34 @@ class Job < ApplicationRecord
   end
 
   def self.count_all_levels_of_interest
-    Job.group(:level_of_interest).count.sort.to_h
+    interests = Job.group(:level_of_interest).count.sort.to_h
+
+    Job.normalize_interests(interests)
+  end
+
+  def self.normalize_interests(interests)
+    stars = {}
+
+    interests.each do |interest, count|
+      interest_string = self.to_stars(interest).to_s
+
+      stars[interest_string] = 0 if stars[interest_string].nil?
+      stars[interest_string] += count
+    end
+
+    stars.keys.each do |key|
+      stars[key.to_f] = stars.delete(key)
+    end
+
+    stars
+  end
+
+  def self.to_stars(interest)
+    normalized = interest / 20.0
+    whole_part = normalized.to_i
+    partial = normalized - whole_part
+    partial = 0.5 unless partial.zero?
+
+    whole_part + partial
   end
 end
