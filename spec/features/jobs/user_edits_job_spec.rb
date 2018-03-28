@@ -29,7 +29,7 @@ require 'rails_helper'
         expect(current_path).to eq company_job_path(company, job)
         expect(page).to have_content('Developer')
         expect(page).to have_content('So fun!')
-        expect(page).to have_content(80)
+        expect(page).to have_selector('[data-interest="80"]')
         expect(page).to have_content('Denver')
         expect(page).to have_selector('.fa-edit')
         expect(page).to have_selector('.fa-trash-alt')

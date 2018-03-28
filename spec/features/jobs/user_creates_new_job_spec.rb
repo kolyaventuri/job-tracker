@@ -8,7 +8,7 @@ describe 'User creates a new job' do
   after(:all) do
     DatabaseCleaner.clean
   end
-  
+
   scenario 'a user can create a new job' do
     Category.create!(id: 1, name: "art")
     company = Company.create!(name: 'ESPN')
@@ -25,7 +25,7 @@ describe 'User creates a new job' do
     expect(current_path).to eq("/companies/#{company.id}/jobs/#{Job.last.id}")
     expect(page).to have_content('ESPN')
     expect(page).to have_content('Developer')
-    expect(page).to have_content('80')
+    expect(page).to have_selector('[data-interest="80"]')
     expect(page).to have_content('Denver')
   end
 end
