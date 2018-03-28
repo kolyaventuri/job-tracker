@@ -1,5 +1,7 @@
 <h1><%= @company.name %></h1>
 
+<%= render partial: 'contacts/form', locals: { company: @company, contact: Contact.new } %>
+
 <h2>Contacts</h2>
 <table class="table">
   <tbody>
