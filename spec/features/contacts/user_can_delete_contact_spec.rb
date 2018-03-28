@@ -22,10 +22,11 @@ describe 'User' do
 
       find("#delete_#{contact1.id}").click
 
-      expect(current_path).to eq(company_path(companys))
-
-      expect(page).to have_content contact2.name
-      expect(page).to_not have_content contact1.name
+      expect(current_path).to eq(company_path(company))
+      within('.contacts') do
+        expect(page).to have_content contact2.name
+        expect(page).to_not have_content contact1.name
+      end
     end
   end
 end

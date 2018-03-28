@@ -3,7 +3,7 @@
 <%= render partial: 'contacts/form', locals: { company: @company, contact: Contact.new } %>
 
 <h2>Contacts</h2>
-<table class="table">
+<table class="table contacts">
   <tbody>
     <% @contacts.find_each do |contact| %>
       <tr class="list-group-item">

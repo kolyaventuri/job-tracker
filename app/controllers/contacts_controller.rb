@@ -1,7 +1,6 @@
 class ContactsController < ApplicationController
   def create
     contact = Contact.new(contact_params)
-    company = Company.find(params[:company_id])
 
     contact.company = company
 
@@ -15,13 +14,11 @@ class ContactsController < ApplicationController
   end
 
   def edit
-    @contact = Contact.find(params[:id])
-    @company = Company.find(params[:company_id])
+    @contact = contact
+    @company = company
   end
 
   def update
-    company = Company.find(params[:company_id])
-    contact = Contact.find(params[:id])
     if contact.update(contact_params)
       flash[:success] = "#{contact.name} updated"
       redirect_to company_path(company)
@@ -31,7 +28,26 @@ class ContactsController < ApplicationController
     end
   end
 
+  def destroy
+    name = contact.name
+    if contact.destroy
+      flash[:success] = "#{name} deleted successfully!"
+    else
+      flash[:error] = 'There was an error deleting that contact'
+    end
+
+    redirect_to company_path(company)
+  end
+
   private
+
+  def contact
+    Contact.find(params[:id])
+  end
+
+  def company
+    Company.find(params[:company_id])
+  end
 
   def contact_params
     params.require(:contact).permit(:name, :role, :email)
