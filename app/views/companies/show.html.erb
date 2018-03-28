@@ -1,2 +1,24 @@
 <h1><%= @company.name %></h1>
 
+<h2>Contacts</h2>
+<table class="table">
+  <tbody>
+    <% @contacts.find_each do |contact| %>
+      <tr class="list-group-item">
+        <td>
+          <%= link_to '<i class="fa fa-edit"></i>', edit_company_contact_path(@company, contact), id: "edit_#{contact.id}" %>
+          <%= link_to '<i class="fa fa-trash-o"></i>', company_contact_path(@company, contact), id: "delete_#{contact.id}", method: 'delete' %>
+        </td>
+        <td>
+          <p><%= contact.name %></p>
+        </td>
+        <td>
+          <p><%= contact.role %></p>
+        </td>
+        <td>
+          <p><%= mail_to contact.email %></p>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
