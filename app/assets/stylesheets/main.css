@@ -26,12 +26,25 @@ body {
 }
 
 
-#edit-box-1{
+#edit-box1{
     background-color: black !important;
     width: 700px !important;
     max-width: 93%;
     margin-left: 20px;
-    height: 405px;
+    height: 1100px;
     text-align: left;
     margin-top: 1px;
+}
+
+#dash-board{
+  width: 600px!important;
+  height: 600px !important;
+}
+
+#top-companies{
+  height: 300px!important;
+  width: 730px!important;
+  background-color: white!important;
+      border:10px solid black;
+
 }

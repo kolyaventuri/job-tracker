@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="author" content="">
     <link href="https://blackrockdigital.github.io/startbootstrap-small-business/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://blackrockdigital.github.io/startbootstrap-small-business/css/small-business.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="main.css" rel="stylesheet">
   </head>
   <body>
@@ -19,12 +20,13 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-          <%= link_to 'Home', root_path, {:id=>"home-nav", :class=>"nav-link",:style=>"font-size:23px" } %>
+
+            <%= link_to 'Home', root_path, {:id=>"home-nav",:class=>"nav-link",:style=>"font-size:23px" } %>
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <%= link_to 'Companies', companies_path, {:id=>"companies-nav", :class=>"nav-link",:style=>"font-size:23px" } %>
+              <%= link_to 'Companies', companies_path, {:id=>"companies-nav", :class=>"nav-link",:style=>"font-size:23px" } %>
           </li>
           <li class="nav-item">
             <%= link_to 'Jobs', jobs_path, {:id=>"jobs-nav", :class=>"nav-link",:style=>"font-size:23px" } %>
@@ -42,24 +44,35 @@
   <div class="container">
     <div class="row my-4">
       <div class="col-lg-8">
-        <img class="img-fluid rounded" src="https://preview.ibb.co/gvpoZn/olenka_kotyk_15378_unsplash_copy.jpg" alt="">
+        <img class="img-fluid rounded" src="https://preview.ibb.co/bTa1LS/casey_horner_533586_unsplash_copy.jpg"height="20px" width="100%" alt="">
       </div>
-      <div class="col-lg-4">
-          <% if @company != nil %>
-        <h1><%= @company.name %></h1>
-        <p>These are all the job listing we have for <%=@company.name%> </p>
-         <%= link_to 'Back to all companies', companies_path(@company), { :class=>"btn btn-primary btn-lg" } %>
-     <% end %>
-      </div>
+      <div id="dash-board" class="col-lg-4">
+        <div id="edit-box1" class="col-md-4 mb-4">
+          <div class="card h-100">
+            <h1>Jobs by city</h1>
+            <h4> <%= link_to "Sort cities by level of interest", "jobs?sort=interest", { :class=>"btn btn-primary" }%></h4>
+            <h4> <%= link_to "Sort jobs by city", "jobs?sort=location", { :class=>"btn btn-primary" }%></h4>
+     <% @jobs.dashboard_group.each do |city, jobs| %>
+            <h4> <%= link_to city, "jobs?location=#{city}"%></h4>
+            <%= jobs.count %>
+            <% end %>
+            </div>
+          </div>
+        </div>
     </div>
     <div id="header" class="card text-white bg-secondary my-4 text-center">
       <div class="card-body">
-          <% if @company != nil %>
-        <p class="text-white m-0" style = "font-size:23px">All Jobs for <%=@company.name%></p>
-          <% end %>
       </div>
     </div>
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+  <div id="top-companies" class="top-companies">
+      <h1>Top companies by interest</h1>
+      <% @interest = Company.companies_with_top_interest %>
+      <% @interest.each do |rating| %>
+      <h3><%= rating.name %>:   <%= rating.top_average %></h3><br>
+      <% end %>
+    </div>
+    </div>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>
