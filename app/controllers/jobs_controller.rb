@@ -1,9 +1,19 @@
 require 'pry'
 class JobsController < ApplicationController
+
+
   def index
-    if params[:company_id]
+    if params.value?("location")
+      job = Job.all
+      @jobs = job.location_group
+    elsif params[:company_id]
       @company = Company.find(params[:company_id])
       @jobs = @company.jobs
+    elsif params[:location]
+      @jobs =  Job.where("city = ?", params[:location])
+    elsif params.value?("interest")
+      job = Job.all
+      @jobs = job.sorted_level_of_interest
     else
       @jobs = Job.all
     end
@@ -58,6 +68,11 @@ class JobsController < ApplicationController
   def destroy
     Job.find(params[:id]).destroy
     redirect_to company_jobs_path
+  end
+
+  def dashboard
+    @jobs = Job.all
+    @companies = Company.all
   end
 
   private
