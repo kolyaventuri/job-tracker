@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     @job = Job.find(params[:comment][:job_id])
     @comment = @job.comments.create(comment_params)
     if @comment.save
-      redirect_to  comment_path(@comment)
+      redirect_to comment_path(@comment)
     else
       render :new
     end
