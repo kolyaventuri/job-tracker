@@ -28,8 +28,7 @@ class Job < ApplicationRecord
     Job.order(level_of_interest: :desc)
   end
 
-
-
-
-
+  def self.count_all_levels_of_interest
+    Job.group(:level_of_interest).count.sort.to_h
+  end
 end
