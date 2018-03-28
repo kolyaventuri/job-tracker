@@ -14,6 +14,10 @@ class JobFactory
       expected[interest.to_s] += 1
     end
 
+    expected.keys.each do |key|
+      expected[key.to_i] = expected.delete(key)
+    end
+
     {
       jobs: jobs,
       expected: expected.sort.to_h
