@@ -23,7 +23,7 @@ describe 'Job Factory' do
     generated[:jobs].each do |job|
       expect(job).to be_instance_of(Job)
     end
-
+    
     expect(generated[:expected].values.sum).to be(times)
   end
 end

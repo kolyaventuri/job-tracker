@@ -52,3 +52,21 @@ body {
 .star {
   color: #FFD700;
 }
+
+.row {
+  position: relative;
+}
+
+#top-interest {
+  right: 0;
+  transform: translateX(-50%);
+  position: absolute;
+}
+
+#top-interest li {
+  font-size: 1.5em;
+}
+
+#top-interest li * {
+  display: inline;
+}

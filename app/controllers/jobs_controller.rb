@@ -72,6 +72,7 @@ class JobsController < ApplicationController
   def dashboard
     @jobs = Job.all
     @companies = Company.all
+    @interest_count = Job.count_all_levels_of_interest
   end
 
   private

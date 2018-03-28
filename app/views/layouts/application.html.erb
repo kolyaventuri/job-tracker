@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>JobTracker</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
   <link href="https://blackrockdigital.github.io/startbootstrap-small-business/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://blackrockdigital.github.io/startbootstrap-small-business/css/small-business.css" rel="stylesheet">
@@ -18,7 +18,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <%= link_to 'Home', root_path, {:id=>"home-nav", :class=>"nav-link",:style=>"font-size:23px" } %>
               <span class="sr-only">(current)</span>
             </a>
