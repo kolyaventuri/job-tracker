@@ -67,6 +67,7 @@
   <div id="top-companies" class="top-companies">
       <h1>Top companies by interest</h1>
       <% @interest = Company.companies_with_top_interest %>
+      <% @interest = Company.companies_order(@interest) %>
       <% @interest.each do |rating| %>
       <h3><%= rating.name %>:   <%= rating.top_average %></h3><br>
       <% end %>
