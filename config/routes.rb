@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :companies do
+    resources :contacts, only: [:create, :destroy, :edit, :update]
     resources :jobs do
       resources :comments
     end
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
     resource :jobs
   end
 
-     resources :jobs, only: [:show, :index]
+  resources :jobs, only: [:show, :index]
 
      get "/dashboard", to: "jobs#dashboard"
 

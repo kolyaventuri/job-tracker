@@ -1,0 +1,20 @@
+<h1>Contacts</h1>
+
+<div class="row">
+  <% @contacts.each do |contact| %>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h2 class="card-title"><%= contact.name %></h2>
+          <p class="card-text">
+            <ul>
+              <li> <%= contact.company.name %></li>
+              <li> <%= contact.email %></li>
+              <li> <%= contact.role %></li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
