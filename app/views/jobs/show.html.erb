@@ -37,10 +37,9 @@
               <%= f.hidden_field :job_id, value: @job.id %>
               <%= f.submit %>
               <% end %>
-              <% @job.comments.each do |comment| %>
+              <% @comments.each do |comment| %>
                 <ul><%= comment.comment %></ul>
                 <ul><%= comment.created_at %></ul>
-                <ul><%= comment.updated_at %></ul>
               <% end %>
             <% if @company != nil %>
          <%= link_to    '<i class="far fa-edit" style="font-size:24px"></i>'.html_safe, edit_company_job_path(@job.company) %>

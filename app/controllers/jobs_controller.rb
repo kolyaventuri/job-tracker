@@ -36,13 +36,13 @@ class JobsController < ApplicationController
 
   def show
     if params[:company_id]
-    @company = Company.find(params[:company_id])
-    @job = Job.find(params[:id])
-    @comments = Comment.where(params[:job_id] == :id)
-    @comment = Comment.new()
+      @company = Company.find(params[:company_id])
+      @job = Job.find(params[:id])
+      @comments = Comment.where(params[:job_id] == :id).order('created_at DESC')
+      @comment = Comment.new()
     else
       @job = Job.find(params[:id])
-      @comments = Comment.where(params[:job_id] == :id)
+      @comments = Comment.where(params[:job_id] == :id).order('created_at DESC')
       @comment = Comment.new()
     end
   end
