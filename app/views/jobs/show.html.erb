@@ -36,11 +36,11 @@
               <% end %>
             <% if @company != nil %>
          <%= link_to    '<i class="far fa-edit" style="font-size:24px"></i>'.html_safe, edit_company_job_path(@job.company) %>
-       <%= link_to '<i class="far fa-trash" style="font-size:24px"></i>'.html_safe,  company_job_path(@job.company), method: "delete" %>
+       <%= link_to '<i class="far fa-trash-alt" style="font-size:24px"></i>'.html_safe,  company_job_path(@job.company), method: "delete" %>
          <% end %>
            <% if @company == nil %>
          <%= link_to    '<i class="far fa-edit" style="font-size:24px"></i>'.html_safe, edit_company_job_path(@job) %>
-        <%= link_to '<i class="far fa-trash" style="font-size:24px"></i>'.html_safe,  company_job_path(@job), method: "delete" %>
+        <%= link_to '<i class="far fa-trash-alt" style="font-size:24px"></i>'.html_safe,  company_job_path(@job), method: "delete" %>
     <% end %>
   </div>
 </div>
