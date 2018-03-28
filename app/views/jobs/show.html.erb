@@ -50,6 +50,7 @@
          <%= link_to    '<i class="far fa-edit" style="font-size:24px"></i>'.html_safe, edit_company_job_path(@job) %>
         <%= link_to '<i class="far fa-trash-alt" style="font-size:24px"></i>'.html_safe,  company_job_path(@job), method: "delete" %>
     <% end %>
+             <%= link_to    'Back to jobs', company_jobs_path(@company) %>
   </div>
 </div>
 </div>
@@ -59,4 +60,3 @@
   <div class="card-body">
   </div>
 </div>
-
