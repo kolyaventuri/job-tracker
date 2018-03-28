@@ -1,26 +1,44 @@
-<h1><%= @company.name %></h1>
 
-<%= render partial: 'contacts/form', locals: { company: @company, contact: Contact.new } %>
 
-<h2>Contacts</h2>
-<table class="table contacts">
-  <tbody>
-    <% @contacts.find_each do |contact| %>
-      <tr class="list-group-item">
-        <td>
-          <%= link_to '<i class="far fa-edit"></i>', edit_company_contact_path(@company, contact), id: "edit_#{contact.id}" %>
-          <%= link_to '<i class="far fa-trash-alt"></i>', company_contact_path(@company, contact), id: "delete_#{contact.id}", method: 'delete' %>
-        </td>
-        <td>
-          <p><%= contact.name %></p>
-        </td>
-        <td>
-          <p><%= contact.role %></p>
-        </td>
-        <td>
-          <p><%= mail_to contact.email %></p>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+<div class="container">
+    <div class="row my-4">
+      <div class="col-lg-8">
+        <img class="img-fluid rounded" src="https://preview.ibb.co/e0qj77/the_roaming_platypus_310824_unsplash_copy.jpg"height="20px" width="100%" alt="">
+      </div>
+      <div class="col-lg-4">
+        <h1><%= @company.name %></h1>
+        <%= render partial: 'contacts/form', locals: { company: @company, contact: Contact.new } %><br><br>
+
+
+        <h2>Contacts</h2>
+        <table class="table contacts">
+          <tbody>
+            <% @contacts.find_each do |contact| %>
+              <tr class="list-group-item">
+                <td>
+                  <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_company_contact_path(@company, contact), id: "edit_#{contact.id}" %>
+                  <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, company_contact_path(@company, contact), id: "delete_#{contact.id}", method: 'delete' %>
+                </td>
+                <td>
+                  <p><%= contact.name %></p>
+                </td>
+                <td>
+                  <p><%= contact.role %></p>
+                </td>
+                <td>
+                  <p><%= mail_to contact.email %></p>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+
+      </div>
+    </div>
+    <div id="header" class="card text-white bg-secondary my-4 text-center">
+      <div class="card-body">
+ <%= link_to "View all jobs", company_jobs_path(@company),{:style=>'color:#FFFFFF; font-size:35px;',:class => "css_class"} %>
+      </div>
+    </div>
