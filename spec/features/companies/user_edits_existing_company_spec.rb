@@ -8,7 +8,7 @@ describe 'User edits an existing company' do
   after(:all) do
     DatabaseCleaner.clean
   end
-  
+
   scenario 'a user can edit a company' do
     company = Company.create!(name: 'ESPN')
     visit edit_company_path(company)
@@ -16,7 +16,7 @@ describe 'User edits an existing company' do
     fill_in 'company[name]', with: 'EA Sports'
     click_button 'Update'
 
-    expect(current_path).to eq("/companies/#{Company.last.id}/jobs")
+    expect(current_path).to eq(company_path(Company.last))
     expect(page).to have_content('EA Sports')
     expect(page).to_not have_content('ESPN')
   end
