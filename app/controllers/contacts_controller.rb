@@ -19,6 +19,18 @@ class ContactsController < ApplicationController
     @company = Company.find(params[:company_id])
   end
 
+  def update
+    company = Company.find(params[:company_id])
+    contact = Contact.find(params[:id])
+    if contact.update(contact_params)
+      flash[:success] = "#{contact.name} updated"
+      redirect_to company_path(company)
+    else
+      flash[:error] = 'There was an error updating that concat.'
+      render :edit
+    end
+  end
+
   private
 
   def contact_params
