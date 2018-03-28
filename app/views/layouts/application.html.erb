@@ -5,12 +5,46 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href="https://blackrockdigital.github.io/startbootstrap-small-business/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://blackrockdigital.github.io/startbootstrap-small-business/css/small-business.css" rel="stylesheet">
+  <script defer src="https://pro.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-DtPgXIYsUR6lLmJK14ZNUi11aAoezQtw4ut26Zwy9/6QXHH8W3+gjrRDT+lHiiW4" crossorigin="anonymous"></script>
+  <link href="main.css" rel="stylesheet">
 </head>
 <body>
+  <nav id="nav" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <%= link_to 'Home', root_path, {:id=>"home-nav", :class=>"nav-link",:style=>"font-size:23px" } %>
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+          <%= link_to 'Companies', companies_path, {:id=>"companies-nav", :class=>"nav-link",:style=>"font-size:23px" } %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Jobs', jobs_path, {:id=>"jobs-nav", :class=>"nav-link",:style=>"font-size:23px" } %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Dashboard', dashboard_path, {:id=>"dashboard-nav", :class=>"nav-link",:style=>"font-size:23px" } %>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"style = "font-size:23px" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, class: name %>
   <% end %>
 <%= yield %>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
