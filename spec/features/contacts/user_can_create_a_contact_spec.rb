@@ -20,7 +20,7 @@ describe 'User' do
 
       fill_in 'contact[name]', with: name
       fill_in 'contact[role]', with: role
-      fill_in 'contact[role]', with: email
+      fill_in 'contact[email]', with: email
 
       click_on 'Create Contact'
 
