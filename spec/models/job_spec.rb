@@ -1,4 +1,5 @@
 require 'rails_helper'
+require_relative '../job_factory'
 
 describe Job, type: :model do
   before(:all) do
@@ -23,7 +24,19 @@ describe Job, type: :model do
   describe 'methods' do
     it 'should be able to return count of jobs by level of interest' do
       company = Company.create!(name: 'ESPN')
-      job1 = Job.create(title: 'A', city: 'Denver', level_of_interest: )
+
+      factory_output = JobFactory.create(50)
+      jobs = factory_output[:jobs]
+      expected = factory_output[:expected]
+
+      jobs.map do |job|
+        job.company = company
+        job.save
+      end
+
+      output = Job.count_levels_of_interest
+
+      expect(output).to eq(expected)
     end
   end
 end
