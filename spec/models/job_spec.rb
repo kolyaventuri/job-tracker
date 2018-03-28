@@ -26,19 +26,17 @@ describe Job, type: :model do
       company = Company.create!(name: 'ESPN')
       category = Category.create!(name: 'Art')
 
-      factory_output = JobFactory.create(50)
-      jobs = factory_output[:jobs]
-      expected = factory_output[:expected]
+      factory_output = JobFactory.create(50, company, category)
 
-      jobs.map do |job|
-        job.company = company
-        job.category = category
-        job.save
-      end
+      expected = factory_output[:expected]
 
       output = Job.count_levels_of_interest
 
       expect(output).to eql(expected)
+    end
+
+    it 'should be able to return count of jobs for a single interest level' do
+      
     end
   end
 end
