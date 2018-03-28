@@ -15,7 +15,14 @@
               Description: <%= @job.description %>
               <br>
 
-              Level of Interest: <%= @job.level_of_interest %>
+              Level of Interest: <span data-interest="<%= @job.level_of_interest %>">
+                <% @job.whole_stars.times do %>
+                  <i class="fas fa-star star"></i>
+                <% end %>
+                <% if @job.half_star? %>
+                  <i class="fas fa-star-half star"></i>
+                <% end %>
+              </span>
               <br>
 
               City: <%= @job.city %>
