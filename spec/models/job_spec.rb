@@ -42,5 +42,19 @@ describe Job, type: :model do
 
       expect(output).to eql(@expected[3])
     end
+
+    it 'should be able to normalize interest to [0-5]' do
+      company = Company.create!(name: 'Toast')
+      category = Category.create!(name: 'Graph')
+      job1 = Job.new(title: 'A', level_of_interest: 0, company: company, category: category)
+      job2 = Job.new(title: 'A', level_of_interest: 25, company: company, category: category)
+      job3 = Job.new(title: 'A', level_of_interest: 50, company: company, category: category)
+      job4 = Job.new(title: 'A', level_of_interest: 60, company: company, category: category)
+
+      expect(job1.stars).to be(0.0)
+      expect(job2.stars).to be(1.5)
+      expect(job3.stars).to be(2.5)
+      expect(job4.stars).to be(3.0)
+    end
   end
 end

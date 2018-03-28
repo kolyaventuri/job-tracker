@@ -9,9 +9,17 @@
           <div class="card h-100">
             <div class="card-body">
               <h2 class="card-title"><%= job.title %></h2>
-        <p class="card-text">Description: <%= job.description %></p>
+                <p class="card-text">Description: <%= job.description %></p>
                 <p class="card-text">City:<%= job.city %></p>
-                  <p class="card-text">Interest:<%= job.level_of_interest %></p>
+                  <p class="card-text" data-interest="<%= job.level_of_interest %>">
+                    Interest:
+                    <% job.whole_stars.times do %>
+                      <i class="fas fa-star star"></i>
+                    <% end %>
+                    <% if job.half_star? %>
+                      <i class="fas fa-star-half star"></i>
+                    <% end %>
+                  </p>
                    <p class="card-text">Company:<%= job.company.name %></p>
             </div>
             <div class="card-footer">

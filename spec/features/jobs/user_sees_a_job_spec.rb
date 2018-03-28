@@ -8,7 +8,7 @@ describe 'User sees a specific job' do
   after(:all) do
     DatabaseCleaner.clean
   end
-  
+
   scenario 'a user sees a job for a specific company' do
     Category.create!(id: 1, name: "art")
     company = Company.create!(name: 'ESPN')
@@ -18,6 +18,6 @@ describe 'User sees a specific job' do
 
     expect(page).to have_content('ESPN')
     expect(page).to have_content('Developer')
-    expect(page).to have_content('70')
+    expect(page).to have_selector('[data-interest="70"]')
   end
 end

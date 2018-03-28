@@ -16,7 +16,14 @@
               Description: <%= @job.description %>
               <br>
 
-              Level of Interest: <%= @job.level_of_interest %>
+              Level of Interest: <span data-interest="<%= @job.level_of_interest %>">
+                <% @job.whole_stars.times do %>
+                  <i class="fas fa-star star"></i>
+                <% end %>
+                <% if @job.half_star? %>
+                  <i class="fas fa-star-half star"></i>
+                <% end %>
+              </span>
               <br>
 
               City: <%= @job.city %>
@@ -37,11 +44,11 @@
               <% end %>
             <% if @company != nil %>
          <%= link_to    '<i class="far fa-edit" style="font-size:24px"></i>'.html_safe, edit_company_job_path(@job.company) %>
-       <%= link_to '<i class="far fa-trash" style="font-size:24px"></i>'.html_safe,  company_job_path(@job.company), method: "delete" %>
+       <%= link_to '<i class="far fa-trash-alt" style="font-size:24px"></i>'.html_safe,  company_job_path(@job.company), method: "delete" %>
          <% end %>
            <% if @company == nil %>
          <%= link_to    '<i class="far fa-edit" style="font-size:24px"></i>'.html_safe, edit_company_job_path(@job) %>
-        <%= link_to '<i class="far fa-trash" style="font-size:24px"></i>'.html_safe,  company_job_path(@job), method: "delete" %>
+        <%= link_to '<i class="far fa-trash-alt" style="font-size:24px"></i>'.html_safe,  company_job_path(@job), method: "delete" %>
     <% end %>
   </div>
 </div>

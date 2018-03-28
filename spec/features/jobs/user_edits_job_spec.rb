@@ -32,7 +32,7 @@ require 'rails_helper'
         expect(page).to have_content(80)
         expect(page).to have_content('Denver')
         expect(page).to have_selector('.fa-edit')
-        expect(page).to have_selector('.fa-trash-o')
+        expect(page).to have_selector('.fa-trash-alt')
         expect(page).to have_link('ESPN')
 
       end
