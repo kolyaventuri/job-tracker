@@ -44,6 +44,7 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rspec-rails'
   gem 'pry'
+  gem 'orderly'
 end
 
 group :development do
