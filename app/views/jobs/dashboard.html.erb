@@ -10,9 +10,9 @@
             <h1>Jobs by city</h1>
             <h4> <%= link_to "Sort cities by level of interest", "jobs?sort=interest", { :class=>"btn btn-primary" }%></h4>
             <h4> <%= link_to "Sort jobs by city", "jobs?sort=location", { :class=>"btn btn-primary" }%></h4>
-     <% @jobs.dashboard_group.each do |city, jobs| %>
-            <h4> <%= link_to city, "jobs?location=#{city}"%></h4>
-            <%= jobs.count %>
+            <% @jobs.dashboard_group.each do |city, jobs| %>
+              <h4> <%= link_to city, "jobs?location=#{city}"%></h4>
+              <%= jobs.count %>
             <% end %>
             </div>
           </div>
@@ -22,12 +22,34 @@
       <div class="card-body">
       </div>
     </div>
-  <div id="top-companies" class="top-companies">
-      <h1>Top companies by interest</h1>
-      <% @interest = Company.companies_with_top_interest %>
-      <% @interest = Company.companies_order(@interest) %>
-      <% @interest.each do |rating| %>
-      <h3><%= rating.name %>:   <%= rating.top_average %></h3><br>
-      <% end %>
+  <div class="row">
+
+    <div id="top-companies" class="top-companies col-s12 col-m6">
+        <h1>Top companies by interest</h1>
+        <% @interest = Company.companies_with_top_interest %>
+        <% @interest = Company.companies_order(@interest) %>
+        <% @interest.each do |rating| %>
+        <h3><%= rating.name %>:   <%= rating.top_average %></h3><br>
+        <% end %>
     </div>
+
+    <div id="top-interest" class="top-interest col-s12 col-m6">
+      <h1>Jobs by Interest</h1>
+      <ul>
+        <% @interest_count.each do |interest, count| %>
+          <li data-interest-stars="<%= interest %>">
+            <% until interest < 1 do %>
+              <i class="fas fa-star star"></i>
+              <% interest -= 1 %>
+            <% end %>
+            <% unless interest.zero? %>
+              <i class="fas fa-star-half star"></i>
+            <% end %>
+            <p>&nbsp;&mdash;&nbsp;<%= count %></p>
+          </li>
+        <% end %>
+      </ul>
     </div>
+  </div>
+</div>
+

@@ -59,7 +59,7 @@ describe 'User visits jobs index page' do
         expect(page).to have_content(1)
       end
 
-      within('[data-interest-stars="2"]') do
+      within('[data-interest-stars="2.0"]') do
         expect(page).to have_content(3)
       end
 
