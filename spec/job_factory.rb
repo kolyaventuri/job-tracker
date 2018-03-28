@@ -9,16 +9,21 @@ class JobFactory
       job.city  = rand(36**8).to_s(36)
       job.company = company
       job.category = category
-      interest = rand(1..5)
+      interest = rand(0..100)
       job.level_of_interest = interest
       job.save
       jobs.push(job)
-      expected[interest.to_s] = 0 if expected[interest.to_s].nil?
-      expected[interest.to_s] += 1
+      normalized = interest / 20.0
+      whole_part = normalized.to_i
+      partial = normalized - whole_part
+      partial = 0.5 unless partial.zero?
+      interest_string = (whole_part + partial).to_s
+      expected[interest_string] = 0 if expected[interest_string].nil?
+      expected[interest_string] += 1
     end
 
     expected.keys.each do |key|
-      expected[key.to_i] = expected.delete(key)
+      expected[key.to_f] = expected.delete(key)
     end
 
     {
