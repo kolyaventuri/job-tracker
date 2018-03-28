@@ -22,30 +22,25 @@ describe Job, type: :model do
   end
 
   describe 'methods' do
-    it 'should be able to return count of jobs by level of interest' do
+    before(:each) do
+      DatabaseCleaner.clean
       company = Company.create!(name: 'ESPN')
       category = Category.create!(name: 'Art')
 
       factory_output = JobFactory.create(50, company, category)
 
-      expected = factory_output[:expected]
-
+      @expected = factory_output[:expected]
+    end
+    it 'should be able to return count of jobs by level of interest' do
       output = Job.count_all_levels_of_interest
 
-      expect(output).to eql(expected)
+      expect(output).to eql(@expected)
     end
 
     it 'should be able to return count of jobs for a single interest level' do
-      company = Company.create!(name: 'ESPN')
-      category = Category.create!(name: 'Art')
-
-      factory_output = JobFactory.create(50, company, category)
-
-      expected = factory_output[:expected][3]
-
       output = Job.count_level_of_interest(3)
 
-      expect(output).to eql(expected)
+      expect(output).to eql(@expected[3])
     end
   end
 end
