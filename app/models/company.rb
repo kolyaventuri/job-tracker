@@ -8,10 +8,13 @@ class Company < ApplicationRecord
 
   def self.companies_with_top_interest
    select('companies.name, avg(jobs.level_of_interest) AS top_average')
-     .joins(:jobs)
-     .group(:name)
-     .order('top_average DESC')
-     .limit(3)
+  end
+
+  def self.companies_order(score)
+    score.joins(:jobs)
+    .group(:name)
+    .order('top_average DESC')
+    .limit(3)
   end
 
 end
