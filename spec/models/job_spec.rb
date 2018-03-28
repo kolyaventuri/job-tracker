@@ -30,9 +30,10 @@ describe Job, type: :model do
       expected = factory_output[:expected]
 
       jobs.map do |job|
-        job.company = company
         job.save
       end
+
+      binding.pry
 
       output = Job.count_levels_of_interest
 
