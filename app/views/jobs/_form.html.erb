@@ -47,13 +47,13 @@
           </div>
           <h1><%= @company.name %></h1>
           <p>These are all the job listing we have for <%=@company.name%> </p>
-          <h4> <%= link_to "Sort jobs by city", "jobs?sort=location", { :class=>"btn btn-primary", :id=>"first" }%></h4>
-          <h4> <%= link_to "Sort cities by level of interest", "jobs?sort=interest", { :class=>"btn btn-primary", :id=>"second" }%></h4>
            <%= link_to 'Back to all companies', companies_path(@company), { :class=>"btn btn-primary btn-lg" } %><br>
-         <% end %>
+         <% end %><br>
+         <h4> <%= link_to "Sort cities by level of interest", "jobs?sort=interest", { :class=>"btn btn-primary", :id=>"second" }%></h4>
+         <h4> <%= link_to "Sort jobs by city", "jobs?sort=location", { :class=>"btn btn-primary", :id=>"first" }%></h4>
 
 
-    
+
       </div>
     </div>
     <div id="header" class="card text-white bg-secondary my-4 text-center">
