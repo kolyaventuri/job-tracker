@@ -46,6 +46,7 @@ group :development, :test do
   gem 'launchy'
   gem 'rspec-rails'
   gem 'pry'
+  gem 'orderly'
 end
 
 group :development do
