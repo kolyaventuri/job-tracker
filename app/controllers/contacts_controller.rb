@@ -14,6 +14,11 @@ class ContactsController < ApplicationController
     redirect_to company_path(company)
   end
 
+  def edit
+    @contact = Contact.find(params[:id])
+    @company = Company.find(params[:company_id])
+  end
+
   private
 
   def contact_params

@@ -15,7 +15,7 @@ describe 'User' do
       contact1 = Contact.create!(name: 'Bob', email: 'bob@bob', role: 'PM', company: company)
       contact2 = Contact.create!(name: 'Sally', email: 'sally@sally', role: 'MG', company: company)
       new_name = 'Sampson'
-      
+
       visit company_path(Company.last)
 
       expect(page).to have_content contact1.name
@@ -23,7 +23,7 @@ describe 'User' do
 
       find("#edit_#{contact1.id}").click
 
-      expect(current_path).to eq(edit_company_contact_path(comapny, contact1))
+      expect(current_path).to eq(edit_company_contact_path(company, contact1))
 
       fill_in 'contact[name]', with: new_name
       click_on 'Update Contact'
