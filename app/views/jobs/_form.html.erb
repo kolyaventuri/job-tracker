@@ -45,16 +45,16 @@
         <img class="img-fluid rounded" src="https://preview.ibb.co/gvpoZn/olenka_kotyk_15378_unsplash_copy.jpg" alt="">
       </div>
       <div class="col-lg-4">
-        <div id="header" class="card text-white bg-secondary my-4 text-center">
-          <div class="card-body">
-     <%= link_to "Create New Job", new_company_job_path(@company,@jobs),{:style=>'color:#FFFFFF; font-size:35px;',:class => "css_class"} %>
+        <% unless @company.nil? %>
+          <div id="header" class="card text-white bg-secondary my-4 text-center">
+            <div class="card-body">
+              <%= link_to "Create New Job", new_company_job_path(@company,@jobs),{:style=>'color:#FFFFFF; font-size:35px;',:class => "css_class"} %>
+            </div>
           </div>
-        </div>
-          <% if @company != nil %>
-        <h1><%= @company.name %></h1>
-        <p>These are all the job listing we have for <%=@company.name%> </p>
-         <%= link_to 'Back to all companies', companies_path(@company), { :class=>"btn btn-primary btn-lg" } %>
-     <% end %>
+          <h1><%= @company.name %></h1>
+          <p>These are all the job listing we have for <%=@company.name%> </p>
+           <%= link_to 'Back to all companies', companies_path(@company), { :class=>"btn btn-primary btn-lg" } %>
+         <% end %>
       </div>
     </div>
     <div id="header" class="card text-white bg-secondary my-4 text-center">
